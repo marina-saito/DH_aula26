@@ -21,6 +21,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
@@ -45,4 +49,7 @@ dependencies {
   //  implementation "androidx.navigation:navigation-fragment-ktx:​$nav_version"
   //  implementation "androidx.navigation:navigation-ui-ktx:​$nav_version​"
 
+
+
 }
+

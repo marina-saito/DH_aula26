@@ -9,6 +9,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
+import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.snackbar.R
 import kotlinx.android.synthetic.main.activity_profile.*
@@ -25,9 +26,14 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
-        setSupportActionBar(profileToolbar)
-        navController = findNavController(R.id.action_profileFragment_to_ajudaFragment)
-        //appBarConfiguration = AppBarConfiguration(navController.graph)
-        //setupActionBarWithNavController(navController, appBarConfiguration)
+        setSupportActionBar(profileToolbar) // Se não colocar essa linha, a toolbar não fica visivel
+
+        navController = findNavController(R.id.navHostfragment) // Container dos fragments
+        appBarConfiguration = AppBarConfiguration(navController.graph) // Pega o graph do controller
+        setupActionBarWithNavController(navController, appBarConfiguration)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 }
